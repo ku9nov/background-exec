@@ -8,8 +8,10 @@ import (
 )
 
 func main() {
-	var app string
-	flag.StringVar(&app, "appName", "", "Name of application to execute.")
+	var command string
+	flag.StringVar(&command, "command", "", "Command to execute.")
+	var argsCommand string
+	flag.StringVar(&argsCommand, "commandArgs", "", "Arguments to command.")
 	flag.Parse()
 	// Opening the stdout stderr files in append mode, if the files not present it will create it.
 	stdoutFile, err := os.OpenFile("/tmp/background-exec-stdout.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
@@ -24,7 +26,7 @@ func main() {
 	}
 	defer stderrFile.Close()
 	// Creating a command to run the provided program
-	cmd := exec.Command(app)
+	cmd := exec.Command(command, argsCommand)
 	// Assigning the opened stdout and stderr files to cmd's stdout and stderr respectively
 	cmd.Stdout = stdoutFile
 	cmd.Stderr = stderrFile
