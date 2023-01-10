@@ -22,6 +22,6 @@ These instructions will help you to run this application on your local machine.
 
 `./background -appName=commandName`
 
-The application will redirect the standard output and error of the command to files "stdout.log" and "stderr.log", respectively. 
+The application will redirect the standard output and error of the command to files "/tmp/background-exec-stdout.log" and "/tmp/background-exec-stderr.log", respectively. 
 
 While running the command will also run in background and you can track the process using the process id by running `ps -ef | grep commandName` or `pgrep -f commandName <arg1> <arg2>`.

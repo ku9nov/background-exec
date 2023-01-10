@@ -12,13 +12,13 @@ func main() {
 	flag.StringVar(&app, "appName", "", "Name of application to execute.")
 	flag.Parse()
 	// Opening the stdout stderr files in append mode, if the files not present it will create it.
-	stdoutFile, err := os.OpenFile("stdout.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+	stdoutFile, err := os.OpenFile("/tmp/background-exec-stdout.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer stdoutFile.Close()
 
-	stderrFile, err := os.OpenFile("stderr.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+	stderrFile, err := os.OpenFile("/tmp/background-exec-stderr.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
 	if err != nil {
 		log.Fatal(err)
 	}
